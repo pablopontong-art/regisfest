@@ -228,7 +228,7 @@ function render() {
     } else {
       document.getElementById('no-box').style.display = 'block';
     }
-    fetch('https://script.google.com/macros/s/AKfycbwtUNeaxEVvGUH35MaSpL-Lgkg8e6ETJDvFFKCnhYRw3jtSWNTIKNVvWYmAFZkFvGjN/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwAJE8Y2i7m-y3uVwkG0sD26QmXN-fgVlGFy4CUi2eLysc10MrtfZhQ0e1OUSJGRLCA/exec', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({id: guest.id, nombre: guest.nombre, grupo: guest.grupo, attending, adultos: attending ? adultos : 0, ninos: attending ? ninos : 0, bebes: attending ? bebes : 0, timestamp: new Date().toISOString()})
