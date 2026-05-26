@@ -228,11 +228,7 @@ function render() {
     } else {
       document.getElementById('no-box').style.display = 'block';
     }
-    fetch('https://script.google.com/macros/s/AKfycbwAJE8Y2i7m-y3uVwkG0sD26QmXN-fgVlGFy4CUi2eLysc10MrtfZhQ0e1OUSJGRLCA/exec', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({id: guest.id, nombre: guest.nombre, grupo: guest.grupo, attending, adultos: attending ? adultos : 0, ninos: attending ? ninos : 0, bebes: attending ? bebes : 0, timestamp: new Date().toISOString()})
-    }).catch(()=>{});
+    fetch('https://script.google.com/macros/s/AKfycbwAJE8Y2i7m-y3uVwkG0sD26QmXN-fgVlGFy4CUi2eLysc10MrtfZhQ0e1OUSJGRLCA/exec?id='+encodeURIComponent(guest.id)+'&nombre='+encodeURIComponent(guest.nombre)+'&grupo='+encodeURIComponent(guest.grupo)+'&attending='+(attending?'1':'0')+'&adultos='+(attending?adultos:0)+'&ninos='+(attending?ninos:0)+'&bebes='+(attending?bebes:0)+'&timestamp='+encodeURIComponent(new Date().toISOString()), {mode:'no-cors'}).catch(()=>{});
   };
 }
 
