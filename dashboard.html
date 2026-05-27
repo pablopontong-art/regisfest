@@ -9,116 +9,99 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#FEF0F4;font-family:'Inter',sans-serif;padding:16px;min-height:100vh}
 h1{font-size:18px;font-weight:600;color:#2D1B0E;margin-bottom:4px}
-.sub{font-size:12px;color:#9A7B5A;margin-bottom:16px}
+.sub{font-size:12px;color:#9A7B5A;margin-bottom:12px}
 .refresh-btn{background:#7BB8CC;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:500;cursor:pointer;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
 .stat{background:#fff;border-radius:14px;padding:14px;border:1px solid #F5C8D0}
-.stat-val{font-size:24px;font-weight:600;color:#2D1B0E}
+.stat-val{font-size:26px;font-weight:600;color:#2D1B0E}
 .stat-lbl{font-size:11px;color:#9A7B5A;margin-top:2px}
-.stat.green{border-color:#B8D89A}
-.stat.green .stat-val{color:#3B6D11}
-.stat.red{border-color:#F5C8D0}
-.stat.red .stat-val{color:#C05878}
-.stat.amber{border-color:#F5D76E}
-.stat.amber .stat-val{color:#9A6B1F}
+.stat.green{border-color:#B8D89A}.stat.green .stat-val{color:#3B6D11}
+.stat.red{border-color:#F5C8D0}.stat.red .stat-val{color:#C05878}
+.stat.amber{border-color:#F5D76E}.stat.amber .stat-val{color:#9A6B1F}
+.stat.blue{border-color:#B8D8E8}.stat.blue .stat-val{color:#1A6A8A}
+.stat-full{background:#fff;border-radius:14px;padding:14px;border:1px solid #B8D89A;margin-bottom:10px}
 .section{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;border:1px solid #F5C8D0}
 .section-title{font-size:13px;font-weight:600;color:#2D1B0E;margin-bottom:10px}
-.mesa-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:0.5px solid #F5EEF0}
+.mesa-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:.5px solid #F5EEF0}
 .mesa-row:last-child{border-bottom:none}
-.mesa-name{font-size:12px;font-weight:500;color:#5A3E28}
+.mesa-name{font-size:12px;font-weight:500;color:#5A3E28;min-width:60px}
 .mesa-bar-wrap{flex:1;margin:0 10px;background:#F5EEF0;border-radius:20px;height:8px;overflow:hidden}
 .mesa-bar{height:8px;border-radius:20px;background:#7BB8CC;transition:width .3s}
 .mesa-bar.full{background:#E8936A}
-.mesa-count{font-size:11px;color:#9A7B5A;white-space:nowrap}
-.guest-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid #F5EEF0}
+.mesa-count{font-size:11px;color:#9A7B5A;white-space:nowrap;min-width:40px;text-align:right}
+.guest-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:.5px solid #F5EEF0}
 .guest-row:last-child{border-bottom:none}
-.guest-name{font-size:12px;color:#2D1B0E}
-.guest-grupo{font-size:10px;color:#9A7B5A}
-.badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.gname{font-size:12px;color:#2D1B0E;font-weight:500}
+.ginfo{font-size:10px;color:#9A7B5A}
+.badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;white-space:nowrap}
 .badge-si{background:#EAF3DE;color:#3B6D11}
 .badge-no{background:#FAECE7;color:#C05878}
 .badge-pend{background:#FEF3E2;color:#9A6B1F}
-.last-update{font-size:10px;color:#9A7B5A;text-align:center;margin-top:8px}
-.loading{text-align:center;padding:40px;color:#9A7B5A;font-size:14px}
 </style>
 </head>
 <body>
-
 <h1>Dashboard · Regi's Fest 🎀</h1>
-<div class="sub" id="last-update">Cargando...</div>
+<div class="sub" id="sub">Cargando...</div>
 <button class="refresh-btn" onclick="loadData()">⟳ Actualizar</button>
-
-<div id="content" class="loading">Cargando confirmaciones...</div>
+<div id="content"></div>
 
 <script>
 var SHEET_ID = "1s9W3v55IF7GtBBUVpcQblLDUAWrfMFRyco3Bx_CvSEo";
 var GUESTS = [{"id": "queta", "nombre": "Queta", "grupo": "Familiares Kari", "mesa": "Mesa 3", "total_est": 2}, {"id": "mich_k", "nombre": "Mich", "grupo": "Familiares Kari", "mesa": "Mesa 8", "total_est": 5}, {"id": "debora", "nombre": "Debora", "grupo": "Familiares Kari", "mesa": "Mesa 5", "total_est": 4}, {"id": "lulu", "nombre": "Lulu", "grupo": "Familiares Kari", "mesa": "Mesa 5", "total_est": 4}, {"id": "elisa", "nombre": "Elisa", "grupo": "Familiares Kari", "mesa": "Mesa 5", "total_est": 3}, {"id": "dani", "nombre": "Dani", "grupo": "Familiares Kari", "mesa": "Mesa 4", "total_est": 4}, {"id": "rogelio", "nombre": "Rogelio", "grupo": "Familiares Kari", "mesa": "Mesa 4", "total_est": 4}, {"id": "raul", "nombre": "Raúl", "grupo": "Familiares Kari", "mesa": "Mesa 4", "total_est": 2}, {"id": "ari", "nombre": "Ari e Ivonne", "grupo": "Familiares Kari", "mesa": "Mesa 3", "total_est": 5}, {"id": "carla", "nombre": "Carla", "grupo": "Amigos Kari", "mesa": "Mesa 10", "total_est": 1}, {"id": "xochitl", "nombre": "Xochitl", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 3}, {"id": "brenda", "nombre": "Brenda", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 2}, {"id": "anilu", "nombre": "Anilu e Isaac", "grupo": "Amigos Kari", "mesa": "Mesa 7", "total_est": 3}, {"id": "ivanna", "nombre": "Ivanna", "grupo": "Amigos Kari", "mesa": "Mesa 7", "total_est": 3}, {"id": "erik_ale", "nombre": "Erik y Ale", "grupo": "Amigos Kari", "mesa": "Mesa 7", "total_est": 2}, {"id": "ale", "nombre": "Ale", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 1}, {"id": "jenny", "nombre": "Jenny", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 1}, {"id": "liz", "nombre": "Liz", "grupo": "Amigos Kari", "mesa": "Mesa 7", "total_est": 2}, {"id": "tania", "nombre": "Tania", "grupo": "Amigos Kari", "mesa": "Mesa 9", "total_est": 3}, {"id": "mena", "nombre": "Mena", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 1}, {"id": "rocio", "nombre": "Rocio", "grupo": "Amigos Kari", "mesa": "Mesa 6", "total_est": 2}, {"id": "alonso", "nombre": "Alonso", "grupo": "Amigos Kari", "mesa": "Mesa 7", "total_est": 2}, {"id": "paloma", "nombre": "Paloma", "grupo": "Amigos Kari", "mesa": "Mesa 8", "total_est": 2}, {"id": "humberto", "nombre": "Humberto", "grupo": "Amigos Kari", "mesa": "Mesa 9", "total_est": 1}, {"id": "grecia", "nombre": "Grecia", "grupo": "Familiares Pablo", "mesa": "Mesa 2", "total_est": 1}, {"id": "yuanis", "nombre": "Yuanis", "grupo": "Familiares Pablo", "mesa": "Mesa 1", "total_est": 7}, {"id": "mayis", "nombre": "Mayis", "grupo": "Familiares Pablo", "mesa": "Mesa 2", "total_est": 4}, {"id": "nan", "nombre": "Nan", "grupo": "Familiares Pablo", "mesa": "Mesa 2", "total_est": 1}, {"id": "mich_p", "nombre": "Mich", "grupo": "Familiares Pablo", "mesa": "Mesa 2", "total_est": 3}, {"id": "mario", "nombre": "Mario", "grupo": "Familiares Pablo", "mesa": "Mesa 1", "total_est": 3}, {"id": "yess", "nombre": "Yess", "grupo": "Familiares Pablo", "mesa": "Mesa 1", "total_est": 3}, {"id": "fergie", "nombre": "Fergie y Paul", "grupo": "Amigos Pablo", "mesa": "Mesa 8", "total_est": 3}, {"id": "patricio", "nombre": "Patricio", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 2}, {"id": "polly", "nombre": "Polly", "grupo": "Amigos Pablo", "mesa": "Mesa 8", "total_est": 2}, {"id": "emmanuel", "nombre": "Emmanuel", "grupo": "Amigos Pablo", "mesa": "Mesa 9", "total_est": 3}, {"id": "jesus", "nombre": "Jesús", "grupo": "Amigos Pablo", "mesa": "Mesa 9", "total_est": 3}, {"id": "ivan", "nombre": "Iván", "grupo": "Amigos Pablo", "mesa": "Mesa 9", "total_est": 3}, {"id": "joss", "nombre": "Joss", "grupo": "Amigos Pablo", "mesa": "Mesa 2", "total_est": 3}, {"id": "vanne", "nombre": "Vanne y Erik", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 4}, {"id": "bolo", "nombre": "Bolo", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 1}, {"id": "frank", "nombre": "Frank", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 2}, {"id": "rodrigo", "nombre": "Rodrigo", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 1}, {"id": "sara", "nombre": "Sara", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 1}, {"id": "roa", "nombre": "Roa", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 1}, {"id": "erik_s", "nombre": "Erik S", "grupo": "Amigos Pablo", "mesa": "Mesa 9", "total_est": 4}, {"id": "rulo", "nombre": "Rulo", "grupo": "Amigos Pablo", "mesa": "Mesa 10", "total_est": 3}];
 var MESAS = ['Mesa 1','Mesa 2','Mesa 3','Mesa 4','Mesa 5','Mesa 6','Mesa 7','Mesa 8','Mesa 9','Mesa 10'];
-var CAPACITY = 10;
 
 function loadData() {
-  document.getElementById('last-update').textContent = 'Actualizando...';
-  var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=Sheet1';
-  
+  document.getElementById('sub').textContent = 'Actualizando...';
+  var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json';
   fetch(url)
-    .then(function(r) { return r.text(); })
-    .then(function(text) {
-      var json = JSON.parse(text.replace(/.*?({.*}).*/s,'$1'));
+    .then(function(r){ return r.text(); })
+    .then(function(text){
+      var json = JSON.parse(text.replace(/^[^{]*/, '').replace(/[^}]*$/, ''));
       var rows = json.table.rows || [];
-      
-      // Parse confirmations — skip header row, skip Prueba group
-      var confirmations = {};
-      rows.forEach(function(row) {
-        if (!row.c || !row.c[1]) return;
-        var nombre = row.c[1] ? row.c[1].v : '';
-        var grupo = row.c[2] ? row.c[2].v : '';
-        var mesa = row.c[3] ? row.c[3].v : '';
-        var asiste = row.c[4] ? row.c[4].v : '';
-        var adultos = row.c[5] ? (row.c[5].v || 0) : 0;
-        var ninos = row.c[6] ? (row.c[6].v || 0) : 0;
-        var bebes = row.c[7] ? (row.c[7].v || 0) : 0;
-        
-        if (grupo === 'Prueba') return; // skip test
-        if (nombre === 'Nombre' || nombre === '') return; // skip header
-        
-        // Find guest by nombre+mesa match
-        var g = GUESTS.find(function(x) { return x.nombre === nombre && x.mesa === mesa; });
+
+      // Build latest confirmation per guest (nombre+mesa key, last row wins)
+      var latest = {};
+      rows.forEach(function(row){
+        if (!row.c || !row.c[1] || !row.c[1].v) return;
+        var nombre = (row.c[1].v || '').toString().trim();
+        var grupo  = (row.c[2] ? row.c[2].v || '' : '').toString().trim();
+        var mesa   = (row.c[3] ? row.c[3].v || '' : '').toString().trim();
+        var asiste = (row.c[4] ? row.c[4].v || '' : '').toString().trim();
+        var ad = parseInt(row.c[5] ? row.c[5].v : 0) || 0;
+        var ni = parseInt(row.c[6] ? row.c[6].v : 0) || 0;
+        var be = parseInt(row.c[7] ? row.c[7].v : 0) || 0;
+        if (grupo === 'Prueba' || nombre === 'Nombre') return;
+        // Match guest by nombre+mesa
+        var g = GUESTS.find(function(x){
+          return x.nombre.trim() === nombre && x.mesa.trim() === mesa;
+        });
         if (g) {
-          confirmations[g.id] = {
-            asiste: asiste === 'Si',
-            adultos: parseInt(adultos) || 0,
-            ninos: parseInt(ninos) || 0,
-            bebes: parseInt(bebes) || 0
-          };
+          latest[g.id] = { asiste: asiste === 'Si', ad: ad, ni: ni, be: be };
         }
       });
-      
-      renderDashboard(confirmations);
-      document.getElementById('last-update').textContent = 'Actualizado: ' + new Date().toLocaleTimeString('es-MX');
+
+      renderDashboard(latest);
+      document.getElementById('sub').textContent = 'Actualizado: ' + new Date().toLocaleTimeString('es-MX');
     })
-    .catch(function(err) {
-      document.getElementById('content').innerHTML = '<div class="loading">Error al cargar. Verifica que el Sheet sea público.</div>';
-      document.getElementById('last-update').textContent = 'Error de conexión';
+    .catch(function(){
+      document.getElementById('sub').textContent = 'Error de conexión';
     });
 }
 
 function renderDashboard(conf) {
-  var confirmed = [], cancelled = [], pending = [];
-  var totalAd = 0, totalNi = 0, totalBe = 0;
-  var mesaData = {};
-  MESAS.forEach(function(m) { mesaData[m] = 0; });
+  var confirmed=[], cancelled=[], pending=[];
+  var totalAd=0, totalNi=0, totalBe=0;
+  var mesaData={};
+  MESAS.forEach(function(m){ mesaData[m]=0; });
 
-  GUESTS.forEach(function(g) {
-    if (conf[g.id] !== undefined) {
-      if (conf[g.id].asiste) {
-        confirmed.push(g);
-        totalAd += conf[g.id].adultos;
-        totalNi += conf[g.id].ninos;
-        totalBe += conf[g.id].bebes;
-        if (mesaData[g.mesa] !== undefined) {
-          mesaData[g.mesa] += conf[g.id].adultos + conf[g.id].ninos + conf[g.id].bebes;
-        }
+  GUESTS.forEach(function(g){
+    var c = conf[g.id];
+    if (c !== undefined) {
+      if (c.asiste) {
+        confirmed.push({g:g, c:c});
+        totalAd += c.ad; totalNi += c.ni; totalBe += c.be;
+        if (mesaData[g.mesa] !== undefined) mesaData[g.mesa] += c.ad + c.ni + c.be;
       } else {
         cancelled.push(g);
       }
@@ -128,42 +111,42 @@ function renderDashboard(conf) {
   });
 
   var totalConf = totalAd + totalNi + totalBe;
-
   var html = '';
 
-  // Stats
-  html += '<div class="grid">';
+  // Top stats
+  html += '<div class="grid2">';
   html += '<div class="stat green"><div class="stat-val">' + confirmed.length + '</div><div class="stat-lbl">Grupos confirmados</div></div>';
   html += '<div class="stat amber"><div class="stat-val">' + pending.length + '</div><div class="stat-lbl">Pendientes</div></div>';
   html += '</div>';
-
+  html += '<div class="grid2">';
+  html += '<div class="stat red"><div class="stat-val">' + cancelled.length + '</div><div class="stat-lbl">No asisten</div></div>';
+  html += '<div class="stat blue"><div class="stat-val">' + totalConf + '</div><div class="stat-lbl">Total personas</div></div>';
+  html += '</div>';
   html += '<div class="grid3">';
   html += '<div class="stat green"><div class="stat-val">' + totalAd + '</div><div class="stat-lbl">Adultos</div></div>';
   html += '<div class="stat green"><div class="stat-val">' + totalNi + '</div><div class="stat-lbl">Niños</div></div>';
   html += '<div class="stat green"><div class="stat-val">' + totalBe + '</div><div class="stat-lbl">Bebés</div></div>';
   html += '</div>';
 
-  html += '<div class="stat green" style="margin-bottom:12px"><div class="stat-val">' + totalConf + '</div><div class="stat-lbl">Total personas confirmadas</div></div>';
-
   // Mesas
   html += '<div class="section"><div class="section-title">Ocupación por mesa</div>';
-  MESAS.forEach(function(m) {
+  MESAS.forEach(function(m){
     var occ = mesaData[m] || 0;
-    var pct = Math.min(100, Math.round(occ / CAPACITY * 100));
-    var isFull = occ >= CAPACITY;
-    html += '<div class="mesa-row">';
-    html += '<div class="mesa-name">' + m + '</div>';
-    html += '<div class="mesa-bar-wrap"><div class="mesa-bar' + (isFull?' full':'') + '" style="width:' + pct + '%"></div></div>';
-    html += '<div class="mesa-count">' + occ + '/' + CAPACITY + (isFull?' 🔴':'') + '</div>';
-    html += '</div>';
+    var pct = Math.min(100, Math.round(occ/10*100));
+    var full = occ >= 10;
+    html += '<div class="mesa-row">'
+      + '<div class="mesa-name">' + m + '</div>'
+      + '<div class="mesa-bar-wrap"><div class="mesa-bar' + (full?' full':'') + '" style="width:' + pct + '%"></div></div>'
+      + '<div class="mesa-count">' + occ + '/10' + (full?' 🔴':'') + '</div>'
+      + '</div>';
   });
   html += '</div>';
 
   // Pending
   if (pending.length > 0) {
-    html += '<div class="section"><div class="section-title">⏳ Faltan por confirmar (' + pending.length + ')</div>';
-    pending.forEach(function(g) {
-      html += '<div class="guest-row"><div><div class="guest-name">' + g.nombre + '</div><div class="guest-grupo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-pend">Pendiente</span></div>';
+    html += '<div class="section"><div class="section-title">⏳ Pendientes (' + pending.length + ')</div>';
+    pending.forEach(function(g){
+      html += '<div class="guest-row"><div><div class="gname">' + g.nombre + '</div><div class="ginfo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-pend">Pendiente</span></div>';
     });
     html += '</div>';
   }
@@ -171,9 +154,13 @@ function renderDashboard(conf) {
   // Confirmed
   if (confirmed.length > 0) {
     html += '<div class="section"><div class="section-title">✅ Confirmados (' + confirmed.length + ')</div>';
-    confirmed.forEach(function(g) {
-      var c = conf[g.id];
-      html += '<div class="guest-row"><div><div class="guest-name">' + g.nombre + '</div><div class="guest-grupo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-si">Sí · ' + (c.adultos+c.ninos+c.bebes) + ' pers.</span></div>';
+    confirmed.forEach(function(item){
+      var g=item.g, c=item.c;
+      var total = c.ad+c.ni+c.be;
+      var detail = c.ad+'ad';
+      if(c.ni>0) detail += ' · '+c.ni+'ni';
+      if(c.be>0) detail += ' · '+c.be+'be';
+      html += '<div class="guest-row"><div><div class="gname">' + g.nombre + '</div><div class="ginfo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-si">✓ ' + total + ' · ' + detail + '</span></div>';
     });
     html += '</div>';
   }
@@ -181,8 +168,8 @@ function renderDashboard(conf) {
   // Cancelled
   if (cancelled.length > 0) {
     html += '<div class="section"><div class="section-title">❌ No asisten (' + cancelled.length + ')</div>';
-    cancelled.forEach(function(g) {
-      html += '<div class="guest-row"><div><div class="guest-name">' + g.nombre + '</div><div class="guest-grupo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-no">No asiste</span></div>';
+    cancelled.forEach(function(g){
+      html += '<div class="guest-row"><div><div class="gname">' + g.nombre + '</div><div class="ginfo">' + g.grupo + ' · ' + g.mesa + '</div></div><span class="badge badge-no">No asiste</span></div>';
     });
     html += '</div>';
   }
@@ -191,7 +178,7 @@ function renderDashboard(conf) {
 }
 
 loadData();
-setInterval(loadData, 60000); // auto-refresh every minute
+setInterval(loadData, 60000);
 </script>
 </body>
 </html>
