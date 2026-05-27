@@ -15,131 +15,227 @@ body{background:#FEF0F4;font-family:'Inter',sans-serif;min-height:100vh}
 .etitle{font-family:'Playfair Display',serif;font-size:15px;font-weight:500;font-style:italic;color:#2D1B0E;line-height:1.55;text-align:center;padding:0 4px}
 .irow{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .iico{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.itxt{font-size:12px;color:#5A3E28;font-weight:500}
-.isub{font-size:11px;color:#9A7B5A}
 .mlink{display:flex;align-items:center;gap:6px;background:#E8F4FB;border-radius:10px;padding:7px 10px;margin-top:8px;text-decoration:none}
 .greet{padding:0 16px;margin:16px 0 8px}
-.gname{font-family:'Playfair Display',serif;font-size:16px;color:#2D1B0E}
-.gsub{font-size:12px;color:#7A5C3A;margin-top:4px;line-height:1.5}
 .urgency{margin-top:10px;background:#FEF3E2;border:1px solid #F5C8D0;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px}
-.div{border:none;border-top:1px dashed #F5C8D0;margin:14px 16px}
+.hdiv{border:none;border-top:1px dashed #F5C8D0;margin:14px 16px}
 .fsec{padding:0 16px 16px}
 .lbl{font-size:12px;font-weight:500;color:#5A3E28;margin-bottom:8px}
 .ynrow{display:flex;gap:8px;margin-bottom:14px}
 .ynb{flex:1;padding:10px;border-radius:12px;font-size:13px;font-weight:500;border:1.5px solid #F5C8D0;background:#FFF8FA;color:#5A3E28;cursor:pointer;text-align:center}
 .ynb.on{background:#7BB8CC;border-color:#7BB8CC;color:#fff}
 .crow{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.clbl{font-size:12px;color:#5A3E28}
 .cctl{display:flex;align-items:center;gap:10px}
-.cbtn{width:26px;height:26px;border-radius:8px;background:#FEE8EC;border:1px solid #F5C8D0;color:#C05878;font-size:16px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1;user-select:none}
+.cbtn{width:26px;height:26px;border-radius:8px;background:#FEE8EC;border:1px solid #F5C8D0;color:#C05878;font-size:16px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
 .cbtn.off{opacity:.3;pointer-events:none}
 .cnum{font-size:14px;font-weight:500;color:#2D1B0E;min-width:16px;text-align:center}
 .sbtn{width:100%;padding:13px;background:#7BB8CC;border:none;border-radius:14px;font-size:14px;font-weight:500;color:#fff;cursor:pointer;margin-top:10px}
-.sbox{display:none;text-align:center;padding:24px 16px 16px}
-.nbox{display:none;text-align:center;padding:24px 16px 16px}
+.sbox,.nbox{display:none;text-align:center;padding:24px 16px 16px}
 .mesa{display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;border:1px solid #B8D89A;border-radius:12px;padding:8px 16px;margin-top:14px}
 .aiftr{padding:10px 16px 24px;text-align:center}
 .aibdg{display:inline-flex;align-items:center;gap:6px;background:#F5F3FF;border:.5px solid #C8C3F0;border-radius:20px;padding:7px 16px}
 .aidot{width:6px;height:6px;border-radius:50%;background:#7F77DD;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.aitext{font-size:10px;color:#534AB7;font-weight:500}
 .nf{max-width:400px;margin:60px auto;text-align:center;padding:20px}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-const G=[{"id": "queta", "nombre": "Queta", "grupo": "Familiares Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 3"}, {"id": "mich_k", "nombre": "Mich", "grupo": "Familiares Kari", "adultos": 3, "ninos": 1, "bebes": 1, "max_adultos": 3, "max_ninos": 1, "max_bebes": 1, "mesa": "Mesa 8"}, {"id": "debora", "nombre": "Debora", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "lulu", "nombre": "Lulu", "grupo": "Familiares Kari", "adultos": 3, "ninos": 1, "bebes": 0, "max_adultos": 3, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "elisa", "nombre": "Elisa", "grupo": "Familiares Kari", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "dani", "nombre": "Dani", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "rogelio", "nombre": "Rogelio", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "raul", "nombre": "Raúl", "grupo": "Familiares Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "ari", "nombre": "Ari e Ivonne", "grupo": "Familiares Kari", "adultos": 5, "ninos": 0, "bebes": 0, "max_adultos": 5, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 3"}, {"id": "carla", "nombre": "Carla", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "xochitl", "nombre": "Xochitl", "grupo": "Amigos Kari", "adultos": 2, "ninos": 1, "bebes": 0, "max_adultos": 2, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "brenda", "nombre": "Brenda", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "anilu", "nombre": "Anilu e Isaac", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 7"}, {"id": "ivanna", "nombre": "Ivanna", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 7"}, {"id": "erik_ale", "nombre": "Erik y Ale", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "ale", "nombre": "Ale", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "jenny", "nombre": "Jenny", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "liz", "nombre": "Liz", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "tania", "nombre": "Tania", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "mena", "nombre": "Mena", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "rocio", "nombre": "Rocio", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "alonso", "nombre": "Alonso", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "paloma", "nombre": "Paloma", "grupo": "Amigos Kari", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 8"}, {"id": "humberto", "nombre": "Humberto", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 9"}, {"id": "grecia", "nombre": "Grecia", "grupo": "Familiares Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "yuanis", "nombre": "Yuanis", "grupo": "Familiares Pablo", "adultos": 7, "ninos": 0, "bebes": 0, "max_adultos": 7, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "mayis", "nombre": "Mayis", "grupo": "Familiares Pablo", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "nan", "nombre": "Nan", "grupo": "Familiares Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "mich_p", "nombre": "Mich", "grupo": "Familiares Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 2"}, {"id": "mario", "nombre": "Mario", "grupo": "Familiares Pablo", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "yess", "nombre": "Yess", "grupo": "Familiares Pablo", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "fergie", "nombre": "Fergie y Paul", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 8"}, {"id": "patricio", "nombre": "Patricio", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "polly", "nombre": "Polly", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 8"}, {"id": "emmanuel", "nombre": "Emmanuel", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "jesus", "nombre": "Jesús", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 1, "bebes": 0, "max_adultos": 2, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 9"}, {"id": "ivan", "nombre": "Iván", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "joss", "nombre": "Joss", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 2, "bebes": 0, "max_adultos": 1, "max_ninos": 2, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "vanne", "nombre": "Vanne y Erik", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 2, "bebes": 0, "max_adultos": 2, "max_ninos": 2, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "bolo", "nombre": "Bolo", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "frank", "nombre": "Frank", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "rodrigo", "nombre": "Rodrigo", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "sara", "nombre": "Sara", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "roa", "nombre": "Roa", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "erik_s", "nombre": "Erik S", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 1, "bebes": 1, "max_adultos": 2, "max_ninos": 1, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "rulo", "nombre": "Rulo", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 10"}, {"id": "ayari", "nombre": "Ayari", "grupo": "Prueba", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 5, "max_ninos": 5, "max_bebes": 5, "mesa": "Mesa Test"}];
-const HU="https://raw.githubusercontent.com/pablopontong-art/regisfest/main/hero.jpg";
-const SU="https://script.google.com/macros/s/AKfycbz-vjgiyq2jI32MN4GSTxQwz8OffGF-9uqtwrWojj_vr0HLLGMS2M5DEqgHRWuaOqcO/exec";
 
-function getId(){
-  const p=window.location.pathname.replace(/\//g,'').toLowerCase();
-  const q=new URLSearchParams(window.location.search).get('g')||'';
-  const k=p||q;
-  return G.find(g=>g.id===k||g.id===k.replace(/-/g,'_'));
+var GUESTS = [{"id": "queta", "nombre": "Queta", "grupo": "Familiares Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 3"}, {"id": "mich_k", "nombre": "Mich", "grupo": "Familiares Kari", "adultos": 3, "ninos": 1, "bebes": 1, "max_adultos": 3, "max_ninos": 1, "max_bebes": 1, "mesa": "Mesa 8"}, {"id": "debora", "nombre": "Debora", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "lulu", "nombre": "Lulu", "grupo": "Familiares Kari", "adultos": 3, "ninos": 1, "bebes": 0, "max_adultos": 3, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "elisa", "nombre": "Elisa", "grupo": "Familiares Kari", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 5"}, {"id": "dani", "nombre": "Dani", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "rogelio", "nombre": "Rogelio", "grupo": "Familiares Kari", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "raul", "nombre": "Raúl", "grupo": "Familiares Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 4"}, {"id": "ari", "nombre": "Ari e Ivonne", "grupo": "Familiares Kari", "adultos": 5, "ninos": 0, "bebes": 0, "max_adultos": 5, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 3"}, {"id": "carla", "nombre": "Carla", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "xochitl", "nombre": "Xochitl", "grupo": "Amigos Kari", "adultos": 2, "ninos": 1, "bebes": 0, "max_adultos": 2, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "brenda", "nombre": "Brenda", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "anilu", "nombre": "Anilu e Isaac", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 7"}, {"id": "ivanna", "nombre": "Ivanna", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 7"}, {"id": "erik_ale", "nombre": "Erik y Ale", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "ale", "nombre": "Ale", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "jenny", "nombre": "Jenny", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "liz", "nombre": "Liz", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "tania", "nombre": "Tania", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "mena", "nombre": "Mena", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "rocio", "nombre": "Rocio", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 6"}, {"id": "alonso", "nombre": "Alonso", "grupo": "Amigos Kari", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 7"}, {"id": "paloma", "nombre": "Paloma", "grupo": "Amigos Kari", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 8"}, {"id": "humberto", "nombre": "Humberto", "grupo": "Amigos Kari", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 9"}, {"id": "grecia", "nombre": "Grecia", "grupo": "Familiares Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "yuanis", "nombre": "Yuanis", "grupo": "Familiares Pablo", "adultos": 7, "ninos": 0, "bebes": 0, "max_adultos": 7, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "mayis", "nombre": "Mayis", "grupo": "Familiares Pablo", "adultos": 4, "ninos": 0, "bebes": 0, "max_adultos": 4, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "nan", "nombre": "Nan", "grupo": "Familiares Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "mich_p", "nombre": "Mich", "grupo": "Familiares Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 2"}, {"id": "mario", "nombre": "Mario", "grupo": "Familiares Pablo", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "yess", "nombre": "Yess", "grupo": "Familiares Pablo", "adultos": 3, "ninos": 0, "bebes": 0, "max_adultos": 3, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 1"}, {"id": "fergie", "nombre": "Fergie y Paul", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 8"}, {"id": "patricio", "nombre": "Patricio", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "polly", "nombre": "Polly", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 0, "max_adultos": 2, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 8"}, {"id": "emmanuel", "nombre": "Emmanuel", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "jesus", "nombre": "Jesús", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 1, "bebes": 0, "max_adultos": 2, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 9"}, {"id": "ivan", "nombre": "Iván", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "joss", "nombre": "Joss", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 2, "bebes": 0, "max_adultos": 1, "max_ninos": 2, "max_bebes": 0, "mesa": "Mesa 2"}, {"id": "vanne", "nombre": "Vanne y Erik", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 2, "bebes": 0, "max_adultos": 2, "max_ninos": 2, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "bolo", "nombre": "Bolo", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "frank", "nombre": "Frank", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 1, "bebes": 0, "max_adultos": 1, "max_ninos": 1, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "rodrigo", "nombre": "Rodrigo", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "sara", "nombre": "Sara", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "roa", "nombre": "Roa", "grupo": "Amigos Pablo", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 1, "max_ninos": 0, "max_bebes": 0, "mesa": "Mesa 10"}, {"id": "erik_s", "nombre": "Erik S", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 1, "bebes": 1, "max_adultos": 2, "max_ninos": 1, "max_bebes": 1, "mesa": "Mesa 9"}, {"id": "rulo", "nombre": "Rulo", "grupo": "Amigos Pablo", "adultos": 2, "ninos": 0, "bebes": 1, "max_adultos": 2, "max_ninos": 0, "max_bebes": 1, "mesa": "Mesa 10"}, {"id": "ayari", "nombre": "Ayari", "grupo": "Prueba", "adultos": 1, "ninos": 0, "bebes": 0, "max_adultos": 5, "max_ninos": 5, "max_bebes": 5, "mesa": "Mesa Test"}];
+var HU = "https://raw.githubusercontent.com/pablopontong-art/regisfest/main/hero.jpg";
+var SU = "https://script.google.com/macros/s/AKfycbz-vjgiyq2jI32MN4GSTxQwz8OffGF-9uqtwrWojj_vr0HLLGMS2M5DEqgHRWuaOqcO/exec";
+
+function getId() {
+  var p = window.location.pathname.replace(/\//g,'').toLowerCase();
+  var q = new URLSearchParams(window.location.search).get('g') || '';
+  var k = p || q;
+  return GUESTS.find(function(g) { return g.id === k || g.id === k.replace(/-/g,'_'); });
 }
 
-function send(g,att,ad,ni,be){
-  var i=new Image();
-  i.src=SU+'?id='+encodeURIComponent(g.id)+'&nombre='+encodeURIComponent(g.nombre)+'&grupo='+encodeURIComponent(g.grupo)+'&mesa='+encodeURIComponent(g.mesa)+'&attending='+(att?'1':'0')+'&adultos='+(att?ad:0)+'&ninos='+(att?ni:0)+'&bebes='+(att?be:0)+'&timestamp='+encodeURIComponent(new Date().toISOString());
+function send(g, att, ad, ni, be) {
+  var img = new Image();
+  img.src = SU
+    + '?id=' + encodeURIComponent(g.id)
+    + '&nombre=' + encodeURIComponent(g.nombre)
+    + '&grupo=' + encodeURIComponent(g.grupo)
+    + '&mesa=' + encodeURIComponent(g.mesa)
+    + '&attending=' + (att ? '1' : '0')
+    + '&adultos=' + (att ? ad : 0)
+    + '&ninos=' + (att ? ni : 0)
+    + '&bebes=' + (att ? be : 0)
+    + '&timestamp=' + encodeURIComponent(new Date().toISOString());
 }
 
-function hdr(g){
-  return '<img class="hero" src="'+HU+'" alt="Regi Fest">'
-  +'<div class="card"><div style="text-align:center"><span class="tag">Regi's Fest</span></div>'
-  +'<hr class="rule"><div class="etitle">Ven a celebrar con nosotros<br>el primer añito de Regina</div><hr class="rule">'
-  +'<div style="margin-top:14px">'
-  +'<div class="irow"><div class="iico" style="background:#FEE8EC">🗓</div><div><div class="itxt">Sábado 30 de mayo, 2025</div><div class="isub">1:30 PM</div></div></div>'
-  +'<div class="irow"><div class="iico" style="background:#E8F4FB">📍</div><div><div class="itxt">Jardín Valhalla</div><div class="isub">C. Benito Juárez 2D, López Mateos, Méx.</div></div></div>'
-  +'<a class="mlink" href="https://maps.app.goo.gl/48qAxtSXM2xnY6tf7" target="_blank"><span style="font-size:13px">🗺️</span><span style="font-size:11px;color:#3A7A96;font-weight:500">Ver en Google Maps</span></a>'
-  +'</div></div>'
-  +'<div class="greet"><div class="gname">Hola, '+g.nombre+' 🎀</div>'
-  +'<div class="gsub">Kari y Pablo quieren que seas parte de este momento tan especial. ¿Nos acompañas a celebrar a la pequeña Regina?</div>'
-  +'<div class="urgency"><span style="font-size:16px">📅</span><span style="font-size:12px;color:#9A6B1F;font-weight:500">Por favor confirma tu asistencia <strong>hoy martes 26 de mayo</strong> para organizar tu lugar.</span></div>'
-  +'</div><hr class="div">';
+function mkCounters(g, ad, ni, be) {
+  var off_ad_d = ad <= 0 ? ' off' : '';
+  var off_ad_u = ad >= g.max_adultos ? ' off' : '';
+  var off_ni_d = ni <= 0 ? ' off' : '';
+  var off_ni_u = ni >= g.max_ninos ? ' off' : '';
+  var off_be_d = be <= 0 ? ' off' : '';
+  var off_be_u = be >= g.max_bebes ? ' off' : '';
+  var h = '<div class="lbl">Cuantos seran?</div>';
+  h += '<div class="crow"><div style="font-size:12px;color:#5A3E28">Adultos</div>'
+     + '<div class="cctl">'
+     + '<div class="cbtn' + off_ad_d + '" id="bad" onclick="ch(0,-1)">-</div>'
+     + '<div class="cnum" id="vad">' + ad + '</div>'
+     + '<div class="cbtn' + off_ad_u + '" id="bau" onclick="ch(0,1)">+</div>'
+     + '</div></div>';
+  if (g.max_ninos > 0) {
+    h += '<div class="crow"><div style="font-size:12px;color:#5A3E28">Ninos (2-12)</div>'
+       + '<div class="cctl">'
+       + '<div class="cbtn' + off_ni_d + '" id="bnd" onclick="ch(1,-1)">-</div>'
+       + '<div class="cnum" id="vni">' + ni + '</div>'
+       + '<div class="cbtn' + off_ni_u + '" id="bnu" onclick="ch(1,1)">+</div>'
+       + '</div></div>';
+  }
+  if (g.max_bebes > 0) {
+    h += '<div class="crow"><div style="font-size:12px;color:#5A3E28">Bebes (menos de 2)</div>'
+       + '<div class="cctl">'
+       + '<div class="cbtn' + off_be_d + '" id="bbd" onclick="ch(2,-1)">-</div>'
+       + '<div class="cnum" id="vbe">' + be + '</div>'
+       + '<div class="cbtn' + off_be_u + '" id="bbu" onclick="ch(2,1)">+</div>'
+       + '</div></div>';
+  }
+  return h;
 }
 
-function ftr(){
-  return '<div class="aiftr"><div class="aibdg"><div class="aidot"></div><span class="aitext">Coordinado por Andrea · una IA entrenada para este evento</span></div></div>';
+function mkMesa(mesa) {
+  return '<div class="mesa"><span>&#128186;</span>'
+       + '<span style="font-size:13px;font-weight:500;color:#3B6D11">Tu lugar esta reservado en la <strong>' + mesa + '</strong></span></div>';
 }
 
-function render(){
-  const app=document.getElementById('app');
-  const g=getId();
-  if(!g){app.innerHTML='<div class="nf"><h2 style="font-family:Playfair Display,serif;font-size:22px;color:#2D1B0E;margin-bottom:8px">¡Hola! 🌸</h2><p style="font-size:14px;color:#7A5C3A">No encontramos tu invitación. Escríbele a Kari o Pablo para que te envíen tu link.</p></div>';return;}
-  
-  const key='rf_'+g.id;
-  const saved=localStorage.getItem(key);
-  
-  if(saved){
-    const s=JSON.parse(saved);
-    const mesa=s.att?'<div class="mesa"><span style="font-size:16px">🪑</span><span style="font-size:13px;font-weight:500;color:#3B6D11">Tu lugar está reservado en la <strong>'+g.mesa+'</strong></span></div>':'';
-    const box=s.att
-      ?'<div class="sbox" style="display:block"><div style="font-size:48px;margin-bottom:12px">🎉</div><div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">¡Confirmado!</div><div style="font-size:13px;color:#7A5C3A;line-height:1.6">Gracias, <strong>'+g.nombre+'</strong>. Ya los tenemos anotados.<br>Kari y Pablo están muy contentos de que los acompañen a celebrar a Regina.</div>'+mesa+'</div>'
-      :'<div class="nbox" style="display:block"><div style="font-size:48px;margin-bottom:12px">🌸</div><div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Gracias por avisar</div><div style="font-size:13px;color:#7A5C3A;line-height:1.6">Entendido, <strong>'+g.nombre+'</strong>. Les mandamos un abrazo de parte de Kari, Pablo y la pequeña Regina.</div></div>';
-    app.innerHTML=hdr(g)+box+ftr();
+function mkHeader(g) {
+  return '<img class="hero" src="' + HU + '" alt="Regis Fest">'
+    + '<div class="card">'
+    + '<div style="text-align:center"><span class="tag">Regi&#39;s Fest</span></div>'
+    + '<hr class="rule">'
+    + '<div class="etitle">Ven a celebrar con nosotros<br>el primer a&#241;ito de Regina</div>'
+    + '<hr class="rule">'
+    + '<div style="margin-top:14px">'
+    + '<div class="irow"><div class="iico" style="background:#FEE8EC">&#128197;</div>'
+    + '<div><div style="font-size:12px;color:#5A3E28;font-weight:500">S&#225;bado 30 de mayo, 2025</div>'
+    + '<div style="font-size:11px;color:#9A7B5A">1:30 PM</div></div></div>'
+    + '<div class="irow"><div class="iico" style="background:#E8F4FB">&#128205;</div>'
+    + '<div><div style="font-size:12px;color:#5A3E28;font-weight:500">Jard&#237;n Valhalla</div>'
+    + '<div style="font-size:11px;color:#9A7B5A">C. Benito Ju&#225;rez 2D, L&#243;pez Mateos, M&#233;x.</div></div></div>'
+    + '<a class="mlink" href="https://maps.app.goo.gl/48qAxtSXM2xnY6tf7" target="_blank">'
+    + '<span>&#128506;</span>'
+    + '<span style="font-size:11px;color:#3A7A96;font-weight:500">Ver en Google Maps</span></a>'
+    + '</div></div>'
+    + '<div class="greet">'
+    + '<div style="font-family:Playfair Display,serif;font-size:16px;color:#2D1B0E">Hola, ' + g.nombre + ' &#127800;</div>'
+    + '<div style="font-size:12px;color:#7A5C3A;margin-top:4px;line-height:1.5">Kari y Pablo quieren que seas parte de este momento tan especial.</div>'
+    + '<div class="urgency"><span>&#128197;</span>'
+    + '<span style="font-size:12px;color:#9A6B1F;font-weight:500">Por favor confirma <strong>hoy martes 26 de mayo</strong> para organizar tu lugar.</span></div>'
+    + '</div><hr class="hdiv">';
+}
+
+function mkFooter() {
+  return '<div class="aiftr"><div class="aibdg"><div class="aidot"></div>'
+       + '<span style="font-size:10px;color:#534AB7;font-weight:500">Coordinado por Andrea · una IA entrenada para este evento</span>'
+       + '</div></div>';
+}
+
+function render() {
+  var app = document.getElementById('app');
+  var g = getId();
+
+  if (!g) {
+    app.innerHTML = '<div class="nf"><h2 style="font-family:Playfair Display,serif;font-size:20px;color:#2D1B0E;margin-bottom:8px">Hola! &#127800;</h2>'
+      + '<p style="font-size:14px;color:#7A5C3A">No encontramos tu invitacion. Escribele a Kari o Pablo para tu link.</p></div>';
     return;
   }
 
-  let ad=g.adultos,ni=g.ninos,be=g.bebes,att=true;
+  var key = 'rf_' + g.id;
+  var saved = null;
+  try { saved = localStorage.getItem(key); } catch(e) {}
 
-  function ctrs(){
-    var h='<div class="lbl">¿Cuántos serán?</div>';
-    h+='<div class="crow"><div class="clbl">Adultos</div><div class="cctl"><div class="cbtn'+(ad<=0?' off':'')+'" onclick="ch('ad',-1)">−</div><div class="cnum" id="vad">'+ad+'</div><div class="cbtn'+(ad>=g.max_adultos?' off':'')+'" onclick="ch('ad',1)">+</div></div></div>';
-    if(g.max_ninos>0)h+='<div class="crow"><div class="clbl">Niños (2–12 años)</div><div class="cctl"><div class="cbtn'+(ni<=0?' off':'')+'" onclick="ch('ni',-1)">−</div><div class="cnum" id="vni">'+ni+'</div><div class="cbtn'+(ni>=g.max_ninos?' off':'')+'" onclick="ch('ni',1)">+</div></div></div>';
-    if(g.max_bebes>0)h+='<div class="crow"><div class="clbl">Bebés (menos de 2)</div><div class="cctl"><div class="cbtn'+(be<=0?' off':'')+'" onclick="ch('be',-1)">−</div><div class="cnum" id="vbe">'+be+'</div><div class="cbtn'+(be>=g.max_bebes?' off':'')+'" onclick="ch('be',1)">+</div></div></div>';
-    return h;
+  if (saved) {
+    var s = JSON.parse(saved);
+    var box = s.att
+      ? '<div class="sbox" style="display:block"><div style="font-size:48px;margin-bottom:12px">&#127881;</div>'
+        + '<div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Confirmado!</div>'
+        + '<div style="font-size:13px;color:#7A5C3A;line-height:1.6">Gracias, <strong>' + g.nombre + '</strong>. Ya los tenemos anotados.</div>'
+        + mkMesa(g.mesa) + '</div>'
+      : '<div class="nbox" style="display:block"><div style="font-size:48px;margin-bottom:12px">&#127800;</div>'
+        + '<div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Gracias por avisar</div>'
+        + '<div style="font-size:13px;color:#7A5C3A;line-height:1.6">Entendido, <strong>' + g.nombre + '</strong>.</div></div>';
+    app.innerHTML = mkHeader(g) + box + mkFooter();
+    return;
   }
 
-  app.innerHTML=hdr(g)
-    +'<div class="fsec" id="frm">'
-    +'<div class="lbl">¿Podrán asistir?</div>'
-    +'<div class="ynrow"><div class="ynb on" id="bsi" onclick="sa(true)">Sí, ahí estaremos</div><div class="ynb" id="bno" onclick="sa(false)">No podré ir</div></div>'
-    +'<div id="ctrs">'+ctrs()+'</div>'
-    +'<button class="sbtn" onclick="sub()">Confirmar asistencia</button>'
-    +'</div>'
-    +'<div class="sbox" id="sbox"><div style="font-size:48px;margin-bottom:12px">🎉</div><div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">¡Confirmado!</div><div style="font-size:13px;color:#7A5C3A;line-height:1.6">Gracias, <strong>'+g.nombre+'</strong>. Ya los tenemos anotados.<br>Kari y Pablo están muy contentos de que los acompañen a celebrar a Regina.</div><div class="mesa"><span style="font-size:16px">🪑</span><span style="font-size:13px;font-weight:500;color:#3B6D11">Tu lugar está reservado en la <strong>'+g.mesa+'</strong></span></div></div>'
-    +'<div class="nbox" id="nbox"><div style="font-size:48px;margin-bottom:12px">🌸</div><div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Gracias por avisar</div><div style="font-size:13px;color:#7A5C3A;line-height:1.6">Entendido, <strong>'+g.nombre+'</strong>. Les mandamos un abrazo de parte de Kari, Pablo y la pequeña Regina.</div></div>'
-    +ftr();
+  var ad = g.adultos, ni = g.ninos, be = g.bebes, att = true;
 
-  window.sa=function(v){att=v;document.getElementById('bsi').className='ynb'+(v?' on':'');document.getElementById('bno').className='ynb'+(!v?' on':'');document.getElementById('ctrs').style.display=v?'block':'none';};
-  
-  window.ch=function(f,d){
-    if(f==='ad'){var v=ad+d;if(v<0||v>g.max_adultos)return;ad=v;document.getElementById('vad').textContent=v;document.querySelector('#ctrs .crow:nth-child(2) .cbtn:first-child').className='cbtn'+(v<=0?' off':'');document.querySelector('#ctrs .crow:nth-child(2) .cbtn:last-child').className='cbtn'+(v>=g.max_adultos?' off':'');}
-    if(f==='ni'){var v=ni+d;if(v<0||v>g.max_ninos)return;ni=v;document.getElementById('vni').textContent=v;}
-    if(f==='be'){var v=be+d;if(v<0||v>g.max_bebes)return;be=v;document.getElementById('vbe').textContent=v;}
+  app.innerHTML = mkHeader(g)
+    + '<div class="fsec" id="frm">'
+    + '<div class="lbl">Podran asistir?</div>'
+    + '<div class="ynrow">'
+    + '<div class="ynb on" id="bsi" onclick="sa(true)">Si, ahi estaremos</div>'
+    + '<div class="ynb" id="bno" onclick="sa(false)">No podre ir</div>'
+    + '</div>'
+    + '<div id="ctrs">' + mkCounters(g, ad, ni, be) + '</div>'
+    + '<button class="sbtn" onclick="sub()">Confirmar asistencia</button>'
+    + '</div>'
+    + '<div class="sbox" id="sbox">'
+    + '<div style="font-size:48px;margin-bottom:12px">&#127881;</div>'
+    + '<div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Confirmado!</div>'
+    + '<div style="font-size:13px;color:#7A5C3A;line-height:1.6">Gracias, <strong>' + g.nombre + '</strong>. Ya los tenemos anotados.</div>'
+    + mkMesa(g.mesa)
+    + '</div>'
+    + '<div class="nbox" id="nbox">'
+    + '<div style="font-size:48px;margin-bottom:12px">&#127800;</div>'
+    + '<div style="font-family:Playfair Display,serif;font-size:18px;color:#2D1B0E;margin-bottom:6px">Gracias por avisar</div>'
+    + '<div style="font-size:13px;color:#7A5C3A;line-height:1.6">Entendido, <strong>' + g.nombre + '</strong>.</div>'
+    + '</div>'
+    + mkFooter();
+
+  window.sa = function(v) {
+    att = v;
+    document.getElementById('bsi').className = 'ynb' + (v ? ' on' : '');
+    document.getElementById('bno').className = 'ynb' + (!v ? ' on' : '');
+    document.getElementById('ctrs').style.display = v ? 'block' : 'none';
   };
 
-  window.sub=function(){
-    document.getElementById('frm').style.display='none';
-    if(att){document.getElementById('sbox').style.display='block';}
-    else{document.getElementById('nbox').style.display='block';}
-    localStorage.setItem(key,JSON.stringify({att:att,ad:att?ad:0,ni:att?ni:0,be:att?be:0}));
-    send(g,att,ad,ni,be);
+  window.ch = function(f, d) {
+    if (f === 0) {
+      var v = ad + d;
+      if (v < 0 || v > g.max_adultos) return;
+      ad = v;
+      document.getElementById('vad').textContent = v;
+      document.getElementById('bad').className = 'cbtn' + (v <= 0 ? ' off' : '');
+      document.getElementById('bau').className = 'cbtn' + (v >= g.max_adultos ? ' off' : '');
+    }
+    if (f === 1) {
+      var v = ni + d;
+      if (v < 0 || v > g.max_ninos) return;
+      ni = v;
+      document.getElementById('vni').textContent = v;
+      document.getElementById('bnd').className = 'cbtn' + (v <= 0 ? ' off' : '');
+      document.getElementById('bnu').className = 'cbtn' + (v >= g.max_ninos ? ' off' : '');
+    }
+    if (f === 2) {
+      var v = be + d;
+      if (v < 0 || v > g.max_bebes) return;
+      be = v;
+      document.getElementById('vbe').textContent = v;
+      document.getElementById('bbd').className = 'cbtn' + (v <= 0 ? ' off' : '');
+      document.getElementById('bbu').className = 'cbtn' + (v >= g.max_bebes ? ' off' : '');
+    }
+  };
+
+  window.sub = function() {
+    document.getElementById('frm').style.display = 'none';
+    if (att) { document.getElementById('sbox').style.display = 'block'; }
+    else { document.getElementById('nbox').style.display = 'block'; }
+    try { localStorage.setItem(key, JSON.stringify({att:att,ad:att?ad:0,ni:att?ni:0,be:att?be:0})); } catch(e) {}
+    send(g, att, ad, ni, be);
   };
 }
+
 render();
+
 </script>
 </body>
 </html>
